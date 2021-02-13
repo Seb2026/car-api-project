@@ -9,14 +9,14 @@ router.get(`/cars`, (req, res, next) => {
     res.render("cars");
 });
 
-router.get(`/car-info`, (req,res,next) => {
+router.get(`/gif-info`, (req,res,next) => {
 
         axios
-        .get(`https://vpic.nhtsa.dot.gov/api/vehicles/getmodelsformake/${req.query.make}?format=json`)
-        .then(allCars => {
-            const cars = allCars.data;
-            console.log(cars);
-            res.render("cars-list", {cars});
+        .get(`https://api.giphy.com/v1/gifs/search?q=${req.query.gif}&api_key=${process.env.KEY_ID}&limit=7`)
+        .then(allGif => {
+            const gifs = allGif.data;
+            console.log(gifs);
+            res.render("cars-list", {gifs});
         })
         .catch(err => {
             console.log(`error getting car due to: ${err}`);
