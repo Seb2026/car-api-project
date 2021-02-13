@@ -1,0 +1,71 @@
+
+
+{{!-- {{#if gifs}}
+<div>
+    <h2>GIFs</h2>
+    {{#each gifs.data}}
+        <p>{{title}}</p>
+        <img src="{{images.original.url}}" alt="{{title}}" height=300>
+        <hr>
+    {{/each}}
+{{/if}}
+
+</div> --}}
+
+{{!-- {{#if random}}
+<div>
+    <h2>GIFs</h2>
+    <img src="{{random.data.images.original.url}}" alt="{{random.data.type}}"/>
+{{/if}}
+</div> --}}
+
+
+{{#if gifs}}
+<section id="gallery" class="gallery">
+    <div class="container" data-aos="fade-up">
+
+    <div class="section-title">
+        <h2>GIFs</h2>
+    </div>
+
+    </div>
+
+    <div class="container-fluid" data-aos="fade-up">
+    <div class="gallery-slider swiper-container">
+        <div class="swiper-wrapper">
+
+        <div class="swiper-slide"><a href="#" class="gallery-lightbox" data-gall="gallery-carousel"><img src="{{images.original.url}}" class="img-fluid" alt="{{random.data.type}}"></a></div>
+
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+    
+
+    </div>
+{{/if}}
+</section>
+
+
+{{#if random}}
+<section id="gallery" class="gallery">
+    <div class="container" data-aos="fade-up">
+
+    <div class="section-title">
+        <h2>GIFs</h2>
+    </div>
+
+    </div>
+
+    <div class="container-fluid" data-aos="fade-up">
+    <div class="gallery-slider swiper-container">
+        <div class="swiper-wrapper">
+
+        <div class="swiper-slide"><a href="#" class="gallery-lightbox" data-gall="gallery-carousel"><img src="{{random.data.images.original.url}}" class="img-fluid" alt="{{title}}"></a></div>
+        </div>
+
+    </div>
+    
+
+    </div>
+{{/if}}
+</section>

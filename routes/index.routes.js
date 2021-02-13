@@ -5,8 +5,8 @@ const { default: axios } = require('axios');
 /* GET home page */
 router.get("/", (req, res, next) => res.render("index"));
 
-router.get(`/cars`, (req, res, next) => {
-    res.render("cars");
+router.get(`/gif`, (req, res, next) => {
+    res.render("gif-search");
 });
 
 router.get(`/gif-info`, (req,res,next) => {
@@ -16,15 +16,27 @@ router.get(`/gif-info`, (req,res,next) => {
         .then(allGif => {
             const gifs = allGif.data;
             console.log(gifs);
-            res.render("cars-list", {gifs});
+            res.render("gif-list", {gifs});
         })
         .catch(err => {
-            console.log(`error getting car due to: ${err}`);
+            console.log(`error getting gifs due to: ${err}`);
         });
 
 
 
 });
 
+
+router.get(`/random-gif`, (req,res,next) => {
+    axios
+    .get(`https://api.giphy.com/v1/gifs/random?api_key=${process.env.KEY_ID}&limit=1`)
+    .then(randomGif => {
+        const random = randomGif.data;
+        res.render("gif-list", { random });
+    })
+    .catch(err => {
+        console.log(`error getting random gif due to: ${err}`);
+    });
+});
 
 module.exports = router;
